@@ -20,7 +20,7 @@ function registerExtensionCommands(cmds){
 function activate(context) {
 
 	// set global extension context
-	require('./context').init(context);
+	require('./utils/vscode').initExtensionContext(context)
 
 	registerExtensionCommands( commandsModule )
     

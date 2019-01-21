@@ -1,6 +1,8 @@
 const vscode= require('vscode')
 
 
+let _ctx= null
+
 function registerCommands(ctx, cmdsMap){
 	let dispMap= {}
 	for(let k in cmdsMap){
@@ -16,9 +18,20 @@ function registerCommand(ctx, cmd, clbk){
 	return disp
 }
 
+function initExtensionContext(ctx){
+	_ctx= ctx
+}
+
+function getExtensionContext(){
+	return _ctx
+}
+
+
 
 /*
 	Exports
 */
+exports.initExtensionContext= initExtensionContext
+exports.getExtensionContext= getExtensionContext
 exports.registerCommand= registerCommand
 exports.registerCommands= registerCommands

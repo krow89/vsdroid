@@ -1,5 +1,4 @@
 const vscode= require('vscode')
-const extContext= require('../context')
 const AssetsCopier= require('../utils/extension').AssetsCopier
 const env= require('../utils/environment')
 
@@ -17,13 +16,13 @@ exports.command= {
 			if(folders.length > 1){
 				vscode.window.showInformationMessage(`Project files will be writed only to workspace "${folders[0].name}"`)
 			}
-			let ctx= extContext.getExtensionContext()
+			let ctx= vscode.getExtensionContext()
 			let targetPath= folders[0].uri.fsPath
 			AssetsCopier.copyTemplates(['androidApp','androidGradleBuild'], targetPath, function(err){
 				if(err){
 					vscode.window.showErrorMessage("Something gone wrong with copying files :(")
 				}else{
-					vscode.window.showInformationMessage(`Project files init for workspace "${folders[0].name}" finished :)`)
+					vscode.window.showInformationMessage(`Project files inited for workspace "${folders[0].name}" finished :)`)
 				}
 			})
 		}

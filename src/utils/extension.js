@@ -1,12 +1,13 @@
 const ncp= require('ncp')
 const path= require('path')
+const uvsc= require('../utils/vscode')
 const extContext= require('../context')
 
 const TEMPLATE_DIR= 'resources/templates'
 
 class AssetsCopier{
 	static copyTemplates(templateName, where, clbk){
-		const ctx= extContext.getExtensionContext()
+		const ctx= uvsc.getExtensionContext()
 		if(templateName instanceof Array){
 			for(let c of templateName)
 				ncp.ncp( ctx.asAbsolutePath(path.join(TEMPLATE_DIR, c)), where, function(err){
