@@ -1,0 +1,77 @@
+{
+    "name": "vsdroid",
+    "displayName": "VSDroid",
+    "description": "Add android development features to VS Code",
+    "version": "0.0.1",
+    "publisher": "KrOW",
+    "engines": {
+        "vscode": "^1.23.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:workbench.action.tasks.runTask",
+        "onCommand:vsdroid.sayHello",
+        "onCommand:vsdroid.printPath",
+        "onCommand:vsdroid.initProjectFiles",
+        "onCommand:vsdroid.testRun"
+    ],
+    "main": "./src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "vsdroid.sayHello",
+                "title": "Hello World",
+                "category": "VSDroid"
+            },
+            {
+                "command": "vsdroid.printPath",
+                "title": "Print PATH Environment Variable content",
+                "category": "VSDroid"
+            },
+            {
+                "command": "vsdroid.initProjectFiles",
+                "title": "Init project files in current directory",
+                "category": "VSDroid"
+            },
+            {
+                "command": "vsdroid.testRun",
+                "title": "Test Run",
+                "category": "VSDroid"
+            }
+        ],
+        "taskDefinitions": [
+            {
+                "type": "gradle",
+                "required": [
+                    "task"
+                ],
+                "properties": {
+                    "task": {
+                        "title": "string",
+                        "description": "Task to execute"
+                    }
+                }
+            }
+        ]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "dependencies": {
+        "ncp": "2.0.0"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.21",
+        "eslint": "^4.11.0",
+        "@types/node": "^8.10.25",
+        "@types/mocha": "^2.2.42"
+    },
+    "keywords": [
+        "android",
+        "development"
+    ]
+}
